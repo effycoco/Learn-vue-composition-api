@@ -13,7 +13,7 @@ const fetchData = async () => {
 </script>
 <template>
   <div>
-    <h1>Using Axios</h1>
+    <h3>Using Axios</h3>
     <button @click="fetchData">Get Data</button>
     <div>
       <h2>Data from API:</h2>

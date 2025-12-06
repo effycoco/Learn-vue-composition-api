@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <h2>This is Slot Component</h2>
+  <h3>This is Slot Component</h3>
   <slot>
     <h3>I am the fallback content</h3>
   </slot>

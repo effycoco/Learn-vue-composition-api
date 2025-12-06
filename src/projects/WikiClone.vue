@@ -64,7 +64,7 @@ const submitSearch = () => {
 
 <template>
   <div :class="{ 'dark-theme': isDarkTheme }">
-    <div class="container">
+    <div class="card">
       <div class="header-container">
         <h1>Search Wikipedia</h1>
         <span id="theme-toggler" @click="toggleTheme">{{ isDarkTheme ? 'Light' : 'Dark' }}</span>
@@ -103,10 +103,10 @@ const submitSearch = () => {
 </template>
 
 <style scoped>
-.container {
+.card {
   max-width: 800px;
-  margin: 0 auto;
   padding: 2rem;
+  margin: 60px auto;
 }
 h1 {
   font-size: 3rem;

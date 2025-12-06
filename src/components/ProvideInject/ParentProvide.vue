@@ -42,7 +42,9 @@ provide('moreGames', [
 ]);
 </script>
 <template>
-  <h1>Provide&Inject</h1>
-  <h2>Parent Provide Datas</h2>
-  <ChildInject />
+  <div class="card">
+    <h2>9.Provide&Inject</h2>
+    <h3>Parent Provide Datas</h3>
+    <ChildInject />
+  </div>
 </template>

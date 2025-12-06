@@ -4,7 +4,7 @@ const props = defineProps({
   writer: {
     type: String,
     validator: (propValue) => {
-      return ['车位已满', '糖多令', '乙', '蛋卷'].includes(propValue)
+      return ['车位已满', '糖多令', '乙', '蛋卷'].includes(propValue);
     },
   },
   age: {
@@ -25,24 +25,24 @@ const props = defineProps({
   first: String,
   last: String,
   favNum: Number,
-})
+});
 
-console.log(props.name)
-console.log(props.favNum)
+console.log(props.name);
+console.log(props.favNum);
 </script>
 <template>
   <p>props are immutable</p>
-  <h2>Custom Validator</h2>
-  <h3>Writer: {{ writer }}</h3>
-  <h3>Age: {{ age }}</h3>
-  <h3>Password: {{ password }}</h3>
-  <h2>Complex validate</h2>
-  <h3>loop array</h3>
+  <p>Custom Validator</p>
+  <p>Writer: {{ writer }}</p>
+  <p>Age: {{ age }}</p>
+  <p>Password: {{ password }}</p>
+  <p>Complex validate</p>
+  <p>loop array</p>
   <li v-for="(author, index) in authors" :key="index">{{ author }}</li>
-  <h3>loop object</h3>
+  <p>loop object</p>
   <li v-for="(value, key) in books" :key="key">{{ key + ': ' + value }}</li>
-  <h3>{{ books }}</h3>
-  <h2>{{ favNum }}</h2>
-  <h2>{{ name }}</h2>
-  <h2>{{ first + ' ' + last }}</h2>
+  <p>{{ books }}</p>
+  <p>{{ favNum }}</p>
+  <p>{{ name }}</p>
+  <p>{{ first + ' ' + last }}</p>
 </template>

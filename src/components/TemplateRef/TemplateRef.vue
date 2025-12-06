@@ -20,9 +20,11 @@ onMounted(() => {
 });
 </script>
 <template>
-  <h1>Template Ref</h1>
-  <input type="text" ref="name" />
-  <h3 :ref="myRefFunction">函数refs</h3>
-  <h3>refs on component</h3>
-  <ChildRef ref="child" />
+  <div class="card">
+    <h2>12.Template Ref</h2>
+    <input type="text" ref="name" />
+    <h3 :ref="myRefFunction">函数refs</h3>
+    <h3>refs on component</h3>
+    <ChildRef ref="child" />
+  </div>
 </template>

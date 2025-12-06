@@ -25,10 +25,12 @@ watch(
 );
 </script>
 <template>
-  <h1>Watchers</h1>
-  <span>{{ state.username }}</span> <button @click="state.username = 'Sally'">Change Name</button>
-  <p>{{ count }}</p>
-  <button @click="count++">increment</button>
-  <p>{{ msg }}</p>
-  <input type="text" v-model="msg" placeholder="type something..." />
+  <div class="card">
+    <h2>11.Watchers</h2>
+    <span>{{ state.username }}</span> <button @click="state.username = 'Sally'">Change Name</button>
+    <p>{{ count }}</p>
+    <button @click="count++">increment</button>
+    <p>{{ msg }}</p>
+    <input type="text" v-model="msg" placeholder="type something..." />
+  </div>
 </template>

@@ -17,7 +17,7 @@ const fetchData = () => {
 </script>
 <template>
   <div>
-    <h1>Using Fetch</h1>
+    <h3>Using Fetch</h3>
     <button @click="fetchData">Fetch Data</button>
     <div>
       <h2>Data from API:</h2>

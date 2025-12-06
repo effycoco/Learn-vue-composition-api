@@ -18,7 +18,6 @@ onUnmounted(() => {
 const msg = ref('hello');
 </script>
 <template>
-  <h1>Lifecycle Hooks</h1>
   <h3>{{ msg }}</h3>
   <button @click="msg = 'New Message'">Change Message</button>
 </template>

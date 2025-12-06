@@ -8,7 +8,8 @@ const currentTab = ref('Home');
 const tabs = { Home, Posts, Archive };
 </script>
 <template>
-  <div class="demo">
+  <div class="card">
+    <h2>16.Dynamic Components</h2>
     <button
       v-for="(_, tab) in tabs"
       :key="tab"
@@ -21,11 +22,6 @@ const tabs = { Home, Posts, Archive };
   </div>
 </template>
 <style>
-.demo {
-  border: 1px solid #eee;
-  padding: 20px 30px;
-  margin-top: 1em;
-}
 .tab-button {
   padding: 6px 10px;
   border: 1px solid #ccc;

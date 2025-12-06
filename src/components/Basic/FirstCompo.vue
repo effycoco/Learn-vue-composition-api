@@ -6,13 +6,16 @@ function add(x, y) {
 }
 </script>
 <template>
-  <h1>{{ msg }}</h1>
-  <p>{{ add(4, 8) }}</p>
-  <ChildCompo />
+  <div class="card">
+    <h2>1.Simple Start</h2>
+    <h3>{{ msg }}</h3>
+    <p>{{ add(4, 8) }}</p>
+    <ChildCompo />
+  </div>
 </template>
 
 <style scoped>
-h1 {
+h3 {
   color: #ccc;
 }
 </style>

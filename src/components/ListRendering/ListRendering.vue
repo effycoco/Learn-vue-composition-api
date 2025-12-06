@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-const people = ref(['alice', 'eric', 'susan'])
+import { ref } from 'vue';
+const people = ref(['alice', 'eric', 'susan']);
 const movies = ref([
   {
     Description:
@@ -53,7 +53,7 @@ const movies = ref([
     Votes: '(26K)',
     Year: '1951',
   },
-])
+]);
 
 const games = ref({
   id: 1,
@@ -102,7 +102,7 @@ const games = ref({
       description: 'Complete the game on the hardest difficulty',
     },
   ],
-})
+});
 
 const complexGamesObj = ref({
   game1: {
@@ -141,58 +141,66 @@ const complexGamesObj = ref({
     genre: 'Fiction',
     publicationYear: 1960,
   },
-})
+});
 </script>
 <template>
-  <h2>List Rendering</h2>
-  <p>
-    <code> v-for </code> 可以遍历对象的键值对，
-    <code> v-for="(value, keys, index) in obj" </code>
-    。要注意第一个参数是值，第二个参数是键，第三个参数是index。
-  </p>
-  <ul v-for="(value, keys, index) in games" :key="keys">
-    {{
-      index
-    }}.{{
-      keys
-    }}
-    ➡️
-    {{
-      value
-    }}
-  </ul>
+  <div class="card">
+    <h2>5.List Rendering</h2>
+    <p>
+      <code> v-for </code> 可以遍历对象的键值对，
+      <code> v-for="(value, keys, index) in obj" </code>
+      。要注意第一个参数是值，第二个参数是键，第三个参数是index。
+    </p>
+    <ul v-for="(value, keys, index) in games" :key="keys">
+      {{
+        index
+      }}.{{
+        keys
+      }}
+      ➡️
+      {{
+        value
+      }}
+    </ul>
 
-  <p>遍历对象也可以只取values忽略keys, <code> v-for="(value, index) in obj" </code></p>
+    <p>遍历对象也可以只取values忽略keys, <code> v-for="(value, index) in obj" </code></p>
 
-  <ul v-for="(game, index) in complexGamesObj" :key="index">
-    <li>{{ game }}</li>
-    <br />
-    <li v-for="(value, property, i) in game" :key="i">{{ property }} ➡️ {{ value }}</li>
-  </ul>
+    <ul v-for="(game, index) in complexGamesObj" :key="index">
+      <li>{{ game }}</li>
+      <br />
+      <li v-for="(value, property, i) in game" :key="i">{{ property }} ➡️ {{ value }}</li>
+    </ul>
 
-  <pre>
+    <pre>
    可使用 <code>
       v-for="num in 5"
     </code> 指定循环次数，num 为 1-5
   </pre>
-  <ul v-for="num in 5" :key="num">
-    <li>{{ num }}</li>
-  </ul>
-  <ul v-for="({ Title, Rating, Stars }, index) in movies" :key="index">
-    <li>Title: {{ Title }}</li>
-    <li>Rating: {{ Rating }}</li>
-    <li>Stars: {{ Stars }}</li>
-  </ul>
+    <ul v-for="num in 5" :key="num">
+      <li>{{ num }}</li>
+    </ul>
+    <ul v-for="({ Title, Rating, Stars }, index) in movies" :key="index">
+      <li>Title: {{ Title }}</li>
+      <li>Rating: {{ Rating }}</li>
+      <li>Stars: {{ Stars }}</li>
+    </ul>
 
-  <p>JS中推荐用 for...of 遍历数组中的值，用for...in遍历对象的属性名（key）。</p>
-  <p>
-    Vue 的
-    <code> v-for="(item, index) in arr" </code>
-    的语法和 JavaScript 的 for...in 并没有直接关系，它只是 Vue 自己定义的一种模板语法。和
-    <code> arr.forEach((item, index) => { ... }) </code>
-    逻辑是一样的。
-  </p>
-  <h3 v-for="(person, index) in people" :key="index">
-    {{ index + '.' + person }}
-  </h3>
+    <p>JS中推荐用 for...of 遍历数组中的值，用for...in遍历对象的属性名（key）。</p>
+    <p>
+      Vue 的
+      <code> v-for="(item, index) in arr" </code>
+      的语法和 JavaScript 的 for...in 并没有直接关系，它只是 Vue 自己定义的一种模板语法。和
+      <code> arr.forEach((item, index) => { ... }) </code>
+      逻辑是一样的。
+    </p>
+    <h3 v-for="(person, index) in people" :key="index">
+      {{ index + '.' + person }}
+    </h3>
+  </div>
 </template>
+
+<style scoped>
+.card {
+  max-width: 800px;
+}
+</style>
