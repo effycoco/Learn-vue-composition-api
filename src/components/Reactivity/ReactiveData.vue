@@ -11,7 +11,7 @@ let state = ref({ val: { count: 0 }, user: ['effy', 'susan'] });
 let another = ref({ count: 0 });
 </script>
 <template>
-  <div class="card">
+  <div class="card long-card">
     <h2>3.Reactivity & Reactive 响应性</h2>
     <p>Location: {{ userInfo.location }}</p>
     <button @click="userInfo.location.push('guangzhou')">change Location</button>

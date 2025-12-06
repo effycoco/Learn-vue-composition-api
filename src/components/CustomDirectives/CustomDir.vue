@@ -25,7 +25,7 @@ const vFormatDiv = {
 const vLargeText = (el, binding) => (el.style.fontSize = `${binding.value}rem`);
 </script>
 <template>
-  <div class="card">
+  <div class="card long-card">
     <h2>15.Custom Directives 自定义指令</h2>
     <p v-highlight>这句话很重要</p>
     <p v-italic>这句话使用了全局自定义指令，定义在main.js中</p>

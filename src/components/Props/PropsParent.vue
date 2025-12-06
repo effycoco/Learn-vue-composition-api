@@ -8,7 +8,7 @@ let authors = ref(['alex', 'john', '车位已满', '乙', '蛋卷']);
 let books = ref({ po: '流俗之地', jj: '向导翻车', 豆阅: '春往冬返' });
 </script>
 <template>
-  <div class="card">
+  <div class="card long-3-card">
     <h2>6.Props</h2>
     <PropsChild
       writer="乙"

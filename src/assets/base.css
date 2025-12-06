@@ -12,11 +12,18 @@ body {
 .is-italic {
   font-style: italic;
 }
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: masonry;
+  gap: 16px;
+  align-items: start;
+}
 .container {
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 20px;
 }
 .card {
   max-width: 420px;
@@ -24,4 +31,14 @@ body {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.wide-card {
+  grid-column: span 3;
+  margin: 20px auto;
+}
+.long-card {
+  grid-row: span 2;
+}
+.long-3-card {
+  grid-row: span 3;
 }

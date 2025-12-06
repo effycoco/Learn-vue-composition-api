@@ -5,7 +5,7 @@ import CounterCompo from './CounterCompo.vue';
 import AnotherCounter from './AnotherCounter.vue';
 </script>
 <template>
-  <div class="card">
+  <div class="card long-card">
     <h2>14.Composables 组合式函数</h2>
     <MouseComponent />
     <MouseTracker />

@@ -144,7 +144,7 @@ const complexGamesObj = ref({
 });
 </script>
 <template>
-  <div class="card">
+  <div class="card wide-card">
     <h2>5.List Rendering</h2>
     <p>
       <code> v-for </code> 可以遍历对象的键值对，

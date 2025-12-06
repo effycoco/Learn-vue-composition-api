@@ -22,26 +22,23 @@ function formHandler(username, email, pwd) {
 }
 </script>
 <template>
-  <FirstCompo />
-  <EventHandle />
-  <ReactiveData />
-  <ComputedProperties />
-  <ListRendering />
-  <PropsParent />
-  <ComponentEvent @userInfo="formHandler" />
-  <TrySlot />
-  <ParentProvide />
-  <UseLifecycleHooks />
-  <WatcherCompo />
-  <TemplateRef />
-  <ToggleFriends />
-  <ComposableParent />
-  <CustomDir />
-  <Tabs />
-  <DataFetching />
+  <div class="wrapper">
+    <FirstCompo />
+    <EventHandle />
+    <ReactiveData />
+    <ComputedProperties />
+    <ListRendering />
+    <PropsParent />
+    <ComponentEvent @userInfo="formHandler" />
+    <TrySlot />
+    <ParentProvide />
+    <UseLifecycleHooks />
+    <WatcherCompo />
+    <TemplateRef />
+    <ToggleFriends />
+    <ComposableParent />
+    <CustomDir />
+    <Tabs />
+    <DataFetching />
+  </div>
 </template>
-<style scoped>
-.card {
-  margin: 30px auto;
-}
-</style>
