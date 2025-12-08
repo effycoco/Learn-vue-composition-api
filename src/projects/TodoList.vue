@@ -1,32 +1,68 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const newTask = ref('');
 const tasks = ref([]);
-
-const addTask = () => {
-  if (newTask.value.trim() !== '') {
-    tasks.value.push(newTask.value);
-    newTask.value = '';
+const loadError = ref('');
+const baseURL = 'https://todo-list-6e451-default-rtdb.firebaseio.com/todos';
+onMounted(() => {
+  loadTasks();
+});
+const loadTasks = async () => {
+  try {
+    const res = await fetch(`${baseURL}.json`);
+    if (!res.ok) throw new Error('网络请求失败');
+    const data = await res.json();
+    for (let key in data) {
+      tasks.value.push({ id: key, text: data[key].text });
+    }
+  } catch (err) {
+    loadError.value = `加载数据出错：${err}`;
   }
 };
 
-const removeTask = (index) => {
-  tasks.value.splice(index, 1);
+const addTask = async () => {
+  let current = { text: newTask.value };
+  try {
+    const res = await fetch(`${baseURL}.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(current),
+    });
+    if (!res.ok) throw new Error('无法存储数据');
+    newTask.value = '';
+    loadTasks();
+    // const data = await res.json() // 返回服务器生成current对象的key/id，暂时没用，但如果想改成本地局部更新列表而不是重新获取整个列表，减少get请求，会用到
+    // console.log(data)
+  } catch (err) {
+    console.error('添加失败：', err);
+  }
+};
+
+const removeTask = async (id) => {
+  try {
+    const res = await fetch(`${baseURL}/${id}.json`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('删除失败');
+    loadTasks();
+  } catch (err) {
+    console.error(err);
+  }
 };
 </script>
 
 <template>
   <div class="card">
-    <div class="task-input">
-      <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task" />
-      <button @click="addTask">Add To Do</button>
-    </div>
+    <form class="task-input" @submit.prevent="addTask">
+      <input v-model.trim="newTask" required placeholder="添加待办事项" />
+      <button>添加</button>
+    </form>
 
     <ul class="task-list">
-      <li v-for="(task, index) in tasks" :key="index" class="task-item">
-        {{ task }}
-        <button @click="removeTask(index)" class="remove-button">Remove</button>
+      <li v-for="task in tasks" :key="task.id" class="task-item">
+        {{ task.text }}
+        <button @click="removeTask(task.id)" class="remove-button">删除</button>
       </li>
     </ul>
   </div>
