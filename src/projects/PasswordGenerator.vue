@@ -66,11 +66,8 @@ const generatePassword = () => {
 
 /* ---- 标题 ---- */
 .title {
-  font-size: 22px;
   font-weight: 600;
   text-align: center;
-  color: #222;
-  margin-bottom: 10px;
 }
 
 /* ---- 输入框 ---- */

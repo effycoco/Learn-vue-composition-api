@@ -12,15 +12,15 @@ import TodoList from '@/projects/TodoList.vue';
 </script>
 <template>
   <div class="container">
+    <TodoList />
+    <PasswordGenerator />
+    <Calculator />
     <GithubUsersSearch />
     <DadJokes />
     <ProgressSteps />
-    <PasswordGenerator />
     <FormValidation />
     <AccordionComponent />
-    <Calculator />
     <RandomQuoteGenerator />
-    <TodoList />
   </div>
   <WikiClone />
   <router-link to="/basics">基础概念</router-link>

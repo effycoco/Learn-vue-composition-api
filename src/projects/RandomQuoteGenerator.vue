@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="card">
-    <h1 class="app-title">Random Quote Generator</h1>
+    <h2 class="title">Random Quote Generator</h2>
     <blockquote class="quote-container">
       <p>{{ currentQuote.text }}</p>
       <cite>{{ currentQuote.author }}</cite>
@@ -39,10 +39,8 @@ onMounted(() => {
 .card {
   text-align: center;
 }
-.app-title {
-  font-size: 24px;
+.title {
   margin-bottom: 20px;
-  color: #333;
 }
 .quote-container {
   background-color: #f9f9f9;

@@ -85,8 +85,8 @@ onMounted(loadTasks);
 </template>
 
 <style scoped>
-.card {
-  padding: 36px 28px;
+.title {
+  text-align: center;
 }
 .error-box {
   background-color: #f44336;
@@ -94,12 +94,6 @@ onMounted(loadTasks);
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
-}
-.title {
-  font-size: 24px;
-  margin: 0 0 20px 0;
-  text-align: center;
-  color: #333;
 }
 
 .task-input {

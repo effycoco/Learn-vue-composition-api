@@ -18,6 +18,7 @@ const prevStep = () => {
 
 <template>
   <div class="card">
+    <h2 class="title">Progess Steps</h2>
     <div class="progress-bar">
       <div v-for="(step, index) in steps" :key="index" :class="{ active: index === currentStep }">
         {{ step }}
@@ -31,8 +32,9 @@ const prevStep = () => {
 </template>
 
 <style scoped>
-.card {
-  padding-top: 120px;
+.title {
+  margin-bottom: 40px;
+  text-align: center;
 }
 .progress-bar {
   display: flex;

@@ -13,7 +13,7 @@ const isLoading = ref(false);
 const error = ref('');
 const searchWiki = async (query) => {
   const encodeQuery = encodeURIComponent(query);
-  const endpoint = `https://en.wikipedia.org/w/api.php?action=query¥list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=10&srsearch=${encodeQuery}`;
+  const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=10&srsearch=${encodeQuery}`;
   try {
     isLoading.value = true;
     const response = await axios.get(endpoint);
@@ -63,39 +63,32 @@ const submitSearch = () => {
 </script>
 
 <template>
-  <div :class="{ 'dark-theme': isDarkTheme }">
-    <div class="card">
-      <div class="header-container">
-        <h1>Search Wikipedia</h1>
-        <span id="theme-toggler" @click="toggleTheme">{{ isDarkTheme ? 'Light' : 'Dark' }}</span>
-      </div>
-      <form @submit.prevent="submitSearch" class="search-form">
-        <input
-          type="text"
-          v-model="searchQuery"
-          id="search-input"
-          placeholder="Enter search term"
-        />
-        <button type="submit">Search</button>
-      </form>
-      <div id="search-results">
-        <div class="spinner" v-if="isLoading">Loading...</div>
-        <p v-if="error">{{ error }}</p>
-        <div v-if="searchResults.length">
-          <div v-for="item in searchResults" :key="item.pageid" class="result-item">
-            <h3 class="result-title">
-              <a
-                :href="`https://en.wikipedia.org/?curid=${item.pageid}`"
-                target="_blank"
-                rel="noopener"
-                >{{ item.title }}</a
-              >
-            </h3>
-            <a class="result-link" :href="`https://en.wikipedia.org/?curid=${item.pageid}`">{{
-              `https://en.wikipedia.org/?curid=${item.pageid}`
-            }}</a>
-            <p class="result-snippet" v-html="item.snippet"></p>
-          </div>
+  <div class="card" :class="{ 'dark-theme': isDarkTheme }">
+    <div class="header-container">
+      <h2>Search Wikipedia</h2>
+      <span id="theme-toggler" @click="toggleTheme">{{ isDarkTheme ? 'Light' : 'Dark' }}</span>
+    </div>
+    <form @submit.prevent="submitSearch" class="search-form">
+      <input type="text" v-model="searchQuery" id="search-input" placeholder="Enter search term" />
+      <button type="submit">Search</button>
+    </form>
+    <div id="search-results">
+      <div class="spinner" v-if="isLoading">Loading...</div>
+      <p v-if="error">{{ error }}</p>
+      <div v-if="searchResults.length">
+        <div v-for="item in searchResults" :key="item.pageid" class="result-item">
+          <h3 class="result-title">
+            <a
+              :href="`https://en.wikipedia.org/?curid=${item.pageid}`"
+              target="_blank"
+              rel="noopener"
+              >{{ item.title }}</a
+            >
+          </h3>
+          <a class="result-link" :href="`https://en.wikipedia.org/?curid=${item.pageid}`">{{
+            `https://en.wikipedia.org/?curid=${item.pageid}`
+          }}</a>
+          <p class="result-snippet" v-html="item.snippet"></p>
         </div>
       </div>
     </div>
@@ -108,7 +101,7 @@ const submitSearch = () => {
   padding: 2rem;
   margin: 60px auto;
 }
-h1 {
+h2 {
   font-size: 3rem;
   margin-bottom: 2rem;
 }
@@ -207,7 +200,9 @@ button[type='submit']:hover {
 .dark-theme button[type='submit'] {
   background-color: #0074d9;
 }
-
+.dark-theme .result-title > a {
+  color: rgba(255, 255, 255, 0.87);
+}
 .dark-theme .result-link,
 .dark-theme .result-link:hover {
   color: #90caf9;

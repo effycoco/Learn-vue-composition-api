@@ -30,7 +30,7 @@ const getUserProfileDebounced = debounce(() => getUserProfile(), 300);
 </script>
 <template>
   <div class="card">
-    <h1 class="title">Github User Profile Viewer</h1>
+    <h2 class="title">Github User Profile Viewer</h2>
     <div class="input-container">
       <input
         name="username"
@@ -55,11 +55,6 @@ const getUserProfileDebounced = debounce(() => getUserProfile(), 300);
   </div>
 </template>
 <style scoped>
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-}
 .input-container {
   margin-bottom: 20px;
 }

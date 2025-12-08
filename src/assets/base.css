@@ -43,3 +43,9 @@ body {
 .long-3-card {
   grid-row: span 3;
 }
+
+.title {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #333;
+}
