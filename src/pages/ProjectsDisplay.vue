@@ -23,5 +23,20 @@ import TodoList from '@/projects/TodoList.vue';
     <RandomQuoteGenerator />
   </div>
   <WikiClone />
-  <router-link to="/basics">基础概念</router-link>
+  <router-link to="/grid" class="nav-link">Grid Playground</router-link>
+  <router-link to="/basics" class="nav-link"> Vue Composition API 基础概念</router-link>
 </template>
+<style scoped>
+.nav-link {
+  display: inline-block;
+  padding: 0.5em 0.8em;
+  background-color: #af514c;
+  color: #fff;
+  line-height: 1.2;
+  margin-inline-end: 0.5em;
+  text-decoration: none;
+}
+.nav-link:hover {
+  background-color: #cc6b5a;
+}
+</style>

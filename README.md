@@ -2,6 +2,8 @@
 npm create vue
 ```
 
+学习Composition API 基础并完成10个项目。[教程链接](https://www.youtube.com/watch?v=pgWZLS75Nmo)。
+
 # Emit
 
 组件实例提供了一个自定义事件系统。父组件可以通过`v-on` 或 `@` 来选择性地监听子组件上抛的事件，就像监听原生 DOM 事件那样。
