@@ -30,7 +30,8 @@ const loadTasks = async () => {
 };
 
 const addTask = async () => {
-  let payload = { text: newTask.value };
+  const text = newTask.value;
+  const payload = { text };
   try {
     const res = await fetch(`${baseURL}.json`, {
       method: 'POST',
@@ -40,23 +41,27 @@ const addTask = async () => {
       body: JSON.stringify(payload),
     });
     if (!res.ok) throw new Error('无法添加待办');
+    const data = await res.json();
+    tasks.value.push({ id: data.name, text });
     newTask.value = '';
-    loadTasks();
-    // const data = await res.json() // 返回服务器生成current对象的key/id，暂时没用，但如果想改成本地局部更新列表而不是重新获取整个列表，减少get请求，会用到
-    // console.log(data)
   } catch (err) {
     console.log(err);
-    showError('添加失败：', err.message);
+    showError('添加失败：' + err.message);
   }
 };
 
 const removeTask = async (id) => {
+  const index = tasks.value.findIndex((task) => task.id === id);
+  if (index === -1) return;
+
+  const [removedTask] = tasks.value.splice(index, 1);
+
   try {
     const res = await fetch(`${baseURL}/${id}.json`, { method: 'DELETE' });
     if (!res.ok) throw new Error('无法删除待办');
-    loadTasks();
   } catch (err) {
     console.log(err);
+    if (removedTask) tasks.value.splice(index, 0, removedTask);
     showError('删除错误：' + err.message);
   }
 };
