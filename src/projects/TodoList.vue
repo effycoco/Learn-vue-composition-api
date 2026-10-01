@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue';
 const newTask = ref('');
 const tasks = ref([]);
 const error = ref('');
+const isAdding = ref(false);
 const baseURL = 'https://todo-list-6e451-default-rtdb.firebaseio.com/todos';
 
 function showError(msg) {
@@ -31,28 +32,36 @@ const loadTasks = async () => {
 
 const addTask = async () => {
   const text = newTask.value;
-  const payload = { text };
+  if (!text || isAdding.value) return;
+
+  const task = { id: crypto.randomUUID(), text, pending: true };
+  tasks.value.push(task);
+  newTask.value = '';
+  isAdding.value = true;
+
   try {
-    const res = await fetch(`${baseURL}.json`, {
-      method: 'POST',
+    const res = await fetch(`${baseURL}/${task.id}.json`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ text }),
     });
     if (!res.ok) throw new Error('无法添加待办');
-    const data = await res.json();
-    tasks.value.push({ id: data.name, text });
-    newTask.value = '';
+    task.pending = false;
   } catch (err) {
     console.log(err);
+    tasks.value = tasks.value.filter((item) => item.id !== task.id);
+    if (!newTask.value) newTask.value = text;
     showError('添加失败：' + err.message);
+  } finally {
+    isAdding.value = false;
   }
 };
 
 const removeTask = async (id) => {
   const index = tasks.value.findIndex((task) => task.id === id);
-  if (index === -1) return;
+  if (index === -1 || tasks.value[index].pending) return;
 
   const [removedTask] = tasks.value.splice(index, 1);
 
@@ -77,13 +86,15 @@ onMounted(loadTasks);
     </div>
     <form class="task-input" @submit.prevent="addTask">
       <input v-model.trim="newTask" required placeholder="添加待办事项" />
-      <button>添加</button>
+      <button :disabled="isAdding">添加</button>
     </form>
 
     <ul class="task-list">
       <li v-for="task in tasks" :key="task.id" class="task-item">
         {{ task.text }}
-        <button @click="removeTask(task.id)" class="remove-button">删除</button>
+        <button @click="removeTask(task.id)" class="remove-button" :disabled="task.pending">
+          {{ task.pending ? '保存中...' : '删除' }}
+        </button>
       </li>
     </ul>
   </div>
