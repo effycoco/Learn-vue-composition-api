@@ -82,3 +82,9 @@ npm create vue
 ## 说明
 
 - 部分示例依赖第三方公开 API（Wikipedia、GitHub、icanhazdadjoke 、jsonplaceholder），网络环境可能影响展示效果
+
+## Todo List
+
+- 使用 Vue 3 Composition API 管理待办列表状态，通过 Firebase Realtime Database 实现数据读取、添加与删除。
+- 添加和删除采用乐观更新，减少操作等待；请求失败时回滚本地状态并提示错误。
+- 使用 UUID 作为稳定任务 ID，并处理提交中的重复操作（防止添加请求并发提交，并禁用待保存任务的删除操作）与失败反馈。
